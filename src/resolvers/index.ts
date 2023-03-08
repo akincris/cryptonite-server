@@ -1,11 +1,13 @@
-// import { GraphQLUpload } from 'graphql-upload';
+import { getCoinData } from "../utils/cryptoAPI";
 
-export default {
-//   Upload: GraphQLUpload,
+const resolvers = {
   Query: {
-    // ...jwtResolvers.Query,
-  },
-  Mutation: {
-    // ...jwtResolvers.Mutation,
-  }
+    coins:async () => {
+        const response = await getCoinData("list");
+console.log(response)
+        return response;
+    }
 }
+};
+
+export default resolvers;
