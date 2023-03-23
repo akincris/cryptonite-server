@@ -1,7 +1,4 @@
-import { ApolloServer } from "@apollo/server";
-import { startStandaloneServer } from "@apollo/server/standalone";
-
-const typeDefs = `#graphql
+export const typeDefs = `#graphql
   type Coin {
     id: String
     symbol: String,
@@ -11,10 +8,4 @@ const typeDefs = `#graphql
   type Query {
     coins: [Coin]
   }
-
-  type Mutation {
-
-  }
 `;
-
-export default typeDefs;
