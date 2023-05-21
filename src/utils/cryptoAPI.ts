@@ -18,3 +18,11 @@ export function getCurrencyDetails(ids: string) {
 
   return fetch(url.toString());
 }
+
+export function getCoinHistory(id: string) {
+  const url = new URL(
+    `${COIN_API_URL}/coins/${id}/history?date=21-05-2023&localization=false`
+  );
+
+  return fetch(url.toString());
+}

@@ -1,4 +1,8 @@
-import { getCoinData, getCurrencyDetails } from "../utils/cryptoAPI.js";
+import {
+  getCoinData,
+  getCoinHistory,
+  getCurrencyDetails,
+} from "../utils/cryptoAPI.js";
 export const resolvers = {
   Query: {
     coins: async () => {
@@ -14,7 +18,6 @@ export const resolvers = {
     },
     coinDetails: async (_: any, { ids }: any, context: any) => {
       const coinIds = ids.join("%2C");
-      console.log(coinIds);
       const response = getCurrencyDetails(coinIds)
         .then(async (res) => {
           const r = await res.json();
@@ -22,6 +25,17 @@ export const resolvers = {
             return { name: k, ...r[k] };
           });
           return formattedResult;
+        })
+        .catch((error) => {
+          console.log("error");
+        });
+      return response;
+    },
+    coinHistory: async (_: any, { id }: any, context: any) => {
+      const response = getCoinHistory(id)
+        .then(async (res) => {
+          const r = await res.json();
+          return r;
         })
         .catch((error) => {
           console.log("error");
