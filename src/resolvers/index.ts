@@ -38,7 +38,7 @@ export const resolvers = {
           return r;
         })
         .catch((error) => {
-          console.log("error");
+          console.log(error);
         });
       return response;
     },
